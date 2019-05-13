@@ -122,7 +122,7 @@ def mapedit(game):
     
 
     
-def creategame(chatid, size='77', speed=1.2):   # x = size[0];  y = size[1];   speed в секундах.
+def creategame(chatid, size='99', speed=1.2):   # x = size[0];  y = size[1];   speed в секундах.
     global n
     n+=1
     world={}
