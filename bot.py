@@ -103,7 +103,7 @@ def mapedit(game):
         game['world'][ids]='dead'
     for ids in alive:
         game['world'][ids]='alive'
-    if last==game['world']:
+    if game['last']==game['world']:
         del games[game['code']]    
     elif len(alive)!=0:
         game['last']=game['world']
@@ -112,6 +112,7 @@ def mapedit(game):
     else:
         startgame(game, no=1)
     
+
     
 def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   speed в секундах.
     global n
