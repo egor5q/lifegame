@@ -104,7 +104,8 @@ def mapedit(game):
     for ids in alive:
         game['world'][ids]='alive'
     if game['last']==game['world']:
-        del games[game['code']]    
+        del games[game['code']]  
+        bot.send_message(441399484, 'deleted')  
     elif len(alive)!=0:
         game['last']=game['world']
         t=threading.Timer(game['speed'], startgame, args=[game])
