@@ -105,14 +105,19 @@ def mapedit(game):
         game['world'][ids]='alive'
     print(game['last'])
     print(game['world'])
+    d=0
     if game['last']==game['world']:
-        del games[game['code']]  
-        bot.send_message(441399484, 'deleted')  
-    elif len(alive)!=0:
+        game['count']+=1
+        if game['count']>=2:
+            del games[game['code']]  
+            bot.send_message(441399484, 'deleted')
+            d=1
+    if len(alive)!=0 and d!=1:
+        game['count']=0
         game['last']=game['world']
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
-    else:
+    elif d!=1:
         startgame(game, no=1)
     
 
@@ -137,7 +142,8 @@ def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   spe
         'speed':speed,
         'msg':None,
         'code':n,
-        'last':{}
+        'last':{},
+        'count':0
     }
            }
 
