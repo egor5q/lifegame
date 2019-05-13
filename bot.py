@@ -159,7 +159,8 @@ def creategame(chatid, size='99', speed=1.2):   # x = size[0];  y = size[1];   s
         'code':n,
         'last':{},
         'count':0,
-        'xod':0
+        'xod':0,
+        'del':0
     }
            }
 
