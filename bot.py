@@ -37,7 +37,7 @@ def life(m):
     startgame(game[c])
 
     
-def startgame(game):
+def startgame(game, no=0):
     text=''
     x=0
     y=0
@@ -61,8 +61,8 @@ def startgame(game):
             medit(text, game['msg'].chat.id, game['msg'].message_id)
         except:
             pass
-    
-    mapedit(game)
+    if no==0:
+        mapedit(game)
     
     
 def mapedit(game):
@@ -106,7 +106,7 @@ def mapedit(game):
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
     else:
-        startgame(game)
+        startgame(game, no=1)
     
     
 def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   speed в секундах.
