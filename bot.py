@@ -63,6 +63,8 @@ def startgame(game, no=0):
             pass
     if no==0:
         mapedit(game)
+    else:
+        del games[game['code']]
     
     
 def mapedit(game):
@@ -101,8 +103,10 @@ def mapedit(game):
         game['world'][ids]='dead'
     for ids in alive:
         game['world'][ids]='alive'
-        
-    if len(alive)!=0:
+    if last==game['world']:
+        del games[game['code']]    
+    elif len(alive)!=0:
+        game['last']=game['world']
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
     else:
@@ -128,7 +132,8 @@ def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   spe
         'size':size,
         'speed':speed,
         'msg':None,
-        'code':n
+        'code':n,
+        'last':{}
     }
            }
 
