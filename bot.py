@@ -37,10 +37,13 @@ def life(m):
     
 @bot.message_handler(commands=['clear'])
 def clearr(m):
-    for ids in games:
-        if games[ids]['id']==m.chat.id:
-            del games[ids]
-    bot.send_message(m.chat.id, 'Удалил все игры в чате')
+    try:
+        for ids in games:
+            if games[ids]['id']==m.chat.id:
+                del games[ids]
+        bot.send_message(m.chat.id, 'Удалил все игры в чате')
+    except:
+        bot.send_message(441399484, traceback.format_exc())
 
 def startgame(game, no=0):
     text=''
