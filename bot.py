@@ -103,8 +103,6 @@ def mapedit(game):
         game['world'][ids]='dead'
     for ids in alive:
         game['world'][ids]='alive'
-    print(game['last'])
-    print(game['world'])
     d=0
     if game['last']==game['world']:
         game['count']+=1
@@ -114,7 +112,7 @@ def mapedit(game):
             d=1
     else:
         game['count']=0
-    game['last']=game['world']
+    game['last']=game['world'].copy()
     if len(alive)!=0 and d!=1:
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
