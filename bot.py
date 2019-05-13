@@ -112,8 +112,9 @@ def mapedit(game):
             del games[game['code']]  
             bot.send_message(441399484, 'deleted')
             d=1
-    if len(alive)!=0 and d!=1:
+    else:
         game['count']=0
+    if len(alive)!=0 and d!=1:
         game['last']=game['world']
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
