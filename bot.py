@@ -103,6 +103,8 @@ def mapedit(game):
         game['world'][ids]='dead'
     for ids in alive:
         game['world'][ids]='alive'
+    print(game['last'])
+    print(game['world'])
     if game['last']==game['world']:
         del games[game['code']]  
         bot.send_message(441399484, 'deleted')  
