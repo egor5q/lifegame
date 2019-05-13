@@ -43,6 +43,7 @@ def clearr(m):
             if games[ids]['id']==m.chat.id:
                 dl.append(ids)
         for ids in dl:
+            games[ids]['del']=1
             del games[ids]
         bot.send_message(m.chat.id, 'Удалил все игры в чате')
     except:
@@ -124,9 +125,12 @@ def mapedit(game):
     else:
         game['count']=0
     game['last']=game['world'].copy()
+    if game['del']==1:
+        d=1
     if len(alive)!=0 and d!=1:
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
+       
     elif d!=1:
         t=threading.Timer(game['speed'], startgame, args=[game, 1])
         t.start()
