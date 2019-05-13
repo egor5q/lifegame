@@ -22,6 +22,14 @@ def life(m):
     game=creategame(m.chat.id)
     for ids in game:
         c=ids
+    x=m.text.split(' ')
+    i=1
+    while i<len(x):
+        try:
+            game[c]['world'][x[i]]='alive'
+            i+=1
+        except:
+            pass
     game[c]['world']['00']='alive'
     game[c]['world']['01']='alive'
     game[c]['world']['10']='alive'
@@ -49,7 +57,10 @@ def startgame(game):
     if game['msg']==None:
         game['msg']=bot.send_message(game['id'], text)
     else:
-        medit(text, game['msg'].chat.id, game['msg'].message_id)
+        try:
+            medit(text, game['msg'].chat.id, game['msg'].message_id)
+        except:
+            pass
     
     mapedit(game)
     
