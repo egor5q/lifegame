@@ -20,11 +20,13 @@ games={}
 @bot.message_handler(commands=['life'])
 def life(m):
     game=creategame(m.chat.id)
-    game['code']['world']['00']='alive'
-    game['code']['world']['01']='alive'
-    game['code']['world']['10']='alive'
+    for ids in game:
+        c=ids
+    game[c]['world']['00']='alive'
+    game[c]['world']['01']='alive'
+    game[c]['world']['10']='alive'
     games.update(game)
-    startgame(game['code'])
+    startgame(game[c])
 
     
 def startgame(game):
