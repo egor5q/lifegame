@@ -118,11 +118,12 @@ def mapedit(game):
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
     elif d!=1:
-        startgame(game, no=1)
+        t=threading.Timer(game['speed'], startgame, args=[game, 1])
+        t.start()
     
 
     
-def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   speed в секундах.
+def creategame(chatid, size='77', speed=1.4):   # x = size[0];  y = size[1];   speed в секундах.
     global n
     n+=1
     world={}
@@ -143,7 +144,8 @@ def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   spe
         'msg':None,
         'code':n,
         'last':{},
-        'count':0
+        'count':0,
+        'xod':0
     }
            }
 
