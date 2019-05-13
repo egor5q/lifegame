@@ -105,6 +105,8 @@ def mapedit(game):
     if len(alive)!=0:
         t=threading.Timer(game['speed'], startgame, args=[game])
         t.start()
+    else:
+        startgame(game)
     
     
 def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   speed в секундах.
