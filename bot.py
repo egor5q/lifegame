@@ -30,9 +30,7 @@ def life(m):
             i+=1
         except:
             pass
-    game[c]['world']['00']='alive'
-    game[c]['world']['01']='alive'
-    game[c]['world']['10']='alive'
+    
     games.update(game)
     startgame(game[c])
 
