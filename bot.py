@@ -20,11 +20,11 @@ games={}
 @bot.message_handler(commands=['life'])
 def life(m):
     game=creategame(m.chat.id)
-    game['world']['00']='alive'
-    game['world']['01']='alive'
-    game['world']['10']='alive'
+    game['code']['world']['00']='alive'
+    game['code']['world']['01']='alive'
+    game['code']['world']['10']='alive'
     games.update(game)
-    startgame(game)
+    startgame(game['code'])
 
     
 def startgame(game):
@@ -112,7 +112,8 @@ def creategame(chatid, size='77', speed=1):   # x = size[0];  y = size[1];   spe
         'world':world,
         'size':size,
         'speed':speed,
-        'msg':None
+        'msg':None,
+        'code':n
     }
            }
 
