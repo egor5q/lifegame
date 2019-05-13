@@ -20,6 +20,9 @@ games={}
 @bot.message_handler(commands=['life'])
 def life(m):
     game=creategame(m.chat.id)
+    game['world']['00']='alive'
+    game['world']['01']='alive'
+    game['world']['10']='alive'
     games.update(game)
     startgame(game)
 
